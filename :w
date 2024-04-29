@@ -6,34 +6,32 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 18:32:46 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/04/29 20:08:58 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:48:58 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strstr(char *str, char *to_find)
 {
+	unsigned int	iter_index;
 	unsigned int	found_index;
 
+	iter_index = 0;
 	found_index = 0;
-	if (*str == *to_find && *str == '\0')
+	while (str[iter_index] != '\0' && *to_find != '\0')
 	{
-		return (str);
-	}
-	while (*str != '\0')
-	{
-		while (str[found_index] == to_find[found_index])
+		while ((&str[iter_index])[found_index] == to_find[found_index])
 		{
 			found_index++;
 		}
 		if (to_find[found_index] == '\0')
 		{
-			return (str);
+			return (&str[iter_index]);
 		}
 		else
 		{
 			found_index = 0;
 		}
-		str++;
+		iter_index++;
 	}
 	return (0);
 }
