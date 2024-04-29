@@ -6,34 +6,26 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 14:45:38 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/04/29 17:42:17 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:26:46 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
 	unsigned int	count;
-	unsigned int	terminated;
 
 	count = 0;
-	terminated = 0;
-	while (src[count] != '\0' || count < size)
+	while (*src != '\0' && count < size)
 	{
-		if (count < size)
-		{
-			dest[count] = src[count];
-		}
-		else if (count == size && size != 0)
-		{
-			dest[count - 1] = '\0';
-			terminated = 1;
-		}
-		if (src[count] == '\0')
-		{
-			(dest[count]) = (src[count]);
-			return (count);
-		}
+		*dest = *src;
+		src++;
+		dest++;
 		count++;
+	}
+
+	if (size != 0 && *(dest + 1) != '\0')
+	{
+		*dest = '\0';
 	}
 	return (count);
 }
