@@ -6,12 +6,21 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 14:21:10 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/02 15:09:35 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/02 18:58:50 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
+
+void	ft_swap(int *a, int *b)
+{
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
 
 int	ft_strcmp(char *s1, char *s2)
 {
@@ -29,27 +38,27 @@ int	ft_strcmp(char *s1, char *s2)
 
 void	gen_word_order(char **array, int *ordered, int len)
 {
-	int	i;
+	int	iter_limit;
 	int	j;
-	int	largest;
 
-	i = len - 1;
-	j = 1;
-	while (i > 0)
+	j = 0;
+	while (j < len)
 	{
-		largest = 0;
-		j = 1;
-		while (j < i)
+		ordered[j] = j;
+		j++;
+	}
+	j = 0;
+	iter_limit = len - 1;
+	while (iter_limit > 0)
+	{
+		j = 0;
+		while (j < iter_limit)
 		{
-			if (ft_strcmp(array[j], array[largest]) > 0)
-			{
-				largest = j;
-				printf("%s < %s\n", array[j], array[j + 1]);
-			}
+			if (ft_strcmp(array[ordered[j]], array[ordered[j + 1]]) > 0)
+				ft_swap(&ordered[j], &ordered[j + 1]);
 			j++;
 		}
-		ordered[i] = largest;
-		i--;
+		iter_limit--;
 	}
 }
 
@@ -66,14 +75,16 @@ void	ft_putstr(char *str)
 int	main(int argc, char **argv)
 {
 	int	i;
-	int	largest[argc];
+	int	largest[50];
 
-	i = 1;
-	gen_word_order(argv, largest, argc);
+	i = 0;
+	argv++;
+	argc--;
+	if (argc > 0)
+		gen_word_order(argv, largest, argc);
 	while (i < argc)
 	{
-		if (i != 0)
-			ft_putstr(argv[largest[i]]);
+		ft_putstr(argv[largest[i]]);
 		i++;
 	}
 	return (0);
