@@ -6,11 +6,10 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:57:32 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/06 19:04:12 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/06 19:50:02 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 int	get_size(int size, char **strs, char *sep)
 {
 	char	*ptr;
