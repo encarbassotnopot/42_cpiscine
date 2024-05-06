@@ -6,7 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:01:30 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/06 17:32:47 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/06 19:43:18 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	get_str_pos(char *base, char ch)
 	return (-1);
 }
 
-int	convert_base(char *base, char *str, int radix)
+int	base_to_dec(char *base, char *str, int radix)
 {
 	int	val;
 	int	result;
@@ -68,20 +68,12 @@ int	convert_base(char *base, char *str, int radix)
 	return (result);
 }
 
-ft_atoi_base(char *str, char *base)
+void	ft_atoi_base(char *str, char *base, int *out, int radix)
 {
 	int	sign;
 	int	result;
-	int	radix;
-	int	*out
 
 	sign = 1;
-	radix = get_radix(base);
-	if (radix < 2)
-	{
-		out = 0;
-		return ;
-	}
 	while (*str == ' ' || (*str > 8 && *str < 14))
 	{
 		str++;
@@ -92,10 +84,49 @@ ft_atoi_base(char *str, char *base)
 			sign *= -1;
 		str++;
 	}
-	result = convert_base(base, str, radix);
+	result = base_to_dec(base, str, radix);
 	*out = (sign * result);
+}
+
+void	dec_to_base(int nbr, char *base, char **dest, int radix)
+{
+	if (nbr / radix != 0)
+		dec_to_base(nbr / radix, base, dest, radix);
+	**dest = base[nbr % radix];
+	*dest += 1;
+}
+
+void	ft_putnbr_base(int nbr, char *base, char *dest, int radix)
+{
+	unsigned int	nbr_abs;
+	int				index;
+
+	nbr_abs = nbr;
+	if (nbr < 0)
+	{
+		nbr_abs = ~(--nbr);
+		*dest = '-';
+		dest++;
+	}
+	index = 0;
+	dec_to_base(nbr_abs, base, &dest, radix);
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
+	int		*decimal;
+	char	*result;
+	int		radix;
+
+	decimal = malloc(4);
+	radix = get_radix(base_from);
+	if (radix < 2)
+		return (0);
+	ft_atoi_base(nbr, base_from, decimal, radix);
+	radix = get_radix(base_to);
+	if (radix < 2)
+		return (0);
+	result = malloc(10);
+	ft_putnbr_base(*decimal, base_to, result, radix);
+	return (result);
 }
