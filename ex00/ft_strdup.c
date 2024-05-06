@@ -6,7 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 19:05:02 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/03 19:23:44 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:30:00 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ char	*ft_strdup(char *src)
 	new = malloc(len);
 	len = 0;
 	while (src[len] != '\0')
+	{
 		new[len] = src[len];
+		len++;
+	}
 	return (new);
 }

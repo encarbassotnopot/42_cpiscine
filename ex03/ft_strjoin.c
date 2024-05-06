@@ -6,11 +6,12 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:57:32 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/06 13:57:50 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/06 19:04:12 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	get_size(int size, int **strs, char *sep)
+#include <stdio.h>
+int	get_size(int size, char **strs, char *sep)
 {
 	char	*ptr;
 	int		idx;
@@ -35,20 +36,42 @@ int	get_size(int size, int **strs, char *sep)
 		sep++;
 		sep_size++;
 	}
-	return (bytes + sep_size * (strs - 1) + 1);
+	return (bytes + sep_size * (size - 1) + 1);
+}
+
+void	ft_strcpy(char **dest, char *src)
+{
+	while (*src != '\0')
+	{
+		**dest = *src;
+		*dest += 1;
+		src++;
+	}
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
-	char	*str;
-	int		idx;
+	char	*start;
+	char	**bookmark;
+	int		index;
 
 	if (size == 0)
 	{
-		str = malloc(1);
-		*str = '\0';
-		return (str);
+		start = malloc(1);
+		*start = '\0';
+		return (start);
 	}
-	str = malloc(get_size(size, strs, sep));
-	// TODO
+	start = malloc(get_size(size, strs, sep) + 1);
+	bookmark = malloc(4);
+	*bookmark = start;
+	ft_strcpy(bookmark, strs[0]);
+	index = 1;
+	while (index < size)
+	{
+		ft_strcpy(bookmark, sep);
+		ft_strcpy(bookmark, strs[index]);
+		index++;
+	}
+	**bookmark = '\0';
+	return (start);
 }
