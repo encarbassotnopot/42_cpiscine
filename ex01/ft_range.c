@@ -6,7 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 19:23:16 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/03 19:41:04 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:58:02 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ int	*ft_range(int min, int max)
 		range[index] = min + index;
 		index++;
 	}
-	return range;
+	return (range);
 }

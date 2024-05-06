@@ -1,4 +1,16 @@
-int		get_size(int size, int **strs, char *sep)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/06 13:57:32 by ecoma-ba          #+#    #+#             */
+/*   Updated: 2024/05/06 13:57:50 by ecoma-ba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	get_size(int size, int **strs, char *sep)
 {
 	char	*ptr;
 	int		idx;
@@ -35,9 +47,8 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	{
 		str = malloc(1);
 		*str = '\0';
-		return str;
+		return (str);
 	}
 	str = malloc(get_size(size, strs, sep));
-
-	//TODO
+	// TODO
 }

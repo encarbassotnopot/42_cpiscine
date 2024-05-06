@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/06 13:57:08 by ecoma-ba          #+#    #+#             */
+/*   Updated: 2024/05/06 13:57:09 by ecoma-ba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-#include <stdio.h>
 int	ft_ultimate_range(int **range, int min, int max)
 {
 	int	size;
 	int	index;
-	int *ptr;
+	int	*ptr;
 
 	size = max - min;
 	if (size < 0)
@@ -13,7 +24,6 @@ int	ft_ultimate_range(int **range, int min, int max)
 		range = 0;
 		return (0);
 	}
-	
 	ptr = malloc(size);
 	if (ptr == 0)
 		return (-1);
@@ -22,7 +32,6 @@ int	ft_ultimate_range(int **range, int min, int max)
 	while (index < size)
 	{
 		*(*range + index) = min + index;
-		printf("%d\n", *(*range + index));
 		index++;
 	}
 	return (size);
