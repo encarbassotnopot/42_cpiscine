@@ -1,32 +1,29 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/03 19:23:16 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/03 19:41:04 by ecoma-ba         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdlib.h>
 
-int	*ft_range(int min, int max)
+#include <stdio.h>
+int	ft_ultimate_range(int **range, int min, int max)
 {
 	int	size;
-	int	*range;
 	int	index;
+	int *ptr;
 
 	size = max - min;
 	if (size < 0)
+	{
+		range = 0;
 		return (0);
-	range = malloc(size);
+	}
+	
+	ptr = malloc(size);
+	if (ptr == 0)
+		return (-1);
+	*range = ptr;
 	index = 0;
 	while (index < size)
 	{
-		range[index] = min + index;
+		*(*range + index) = min + index;
+		printf("%d\n", *(*range + index));
 		index++;
 	}
-	return range;
+	return (size);
 }
