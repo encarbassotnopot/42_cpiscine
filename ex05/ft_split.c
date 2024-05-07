@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 unsigned int	str_len(char *str)
 {
@@ -35,23 +36,37 @@ int	str_contains(char *str, char check)
 
 // terminates the split and creates the next one
 // if given last = 1 creates the terminating split (null pointer)
-void	next_split(char **str_group, int is_last, int str_idx, int ch_idx)
+// returns 1 if a new pointer is created
+void term_str(char **str_group, int str_idx, int ch_idx)
 {
-	if (str_group[str_idx][ch_idx] != '\0')
+	if (str_group[str_idx][ch_idx] == '\0' && ch_idx == 0)
+		str_group[str_idx] = 0;
+	else
 	{
 		str_group[str_idx][ch_idx] = '\0';
-		if (is_last)
-			str_group[str_idx + 1] = 0;
-		else
-			str_group[str_idx + 1] = malloc(40);
+		str_group[str_idx + 1] = 0;
 	}
 }
+
+// returns 1 if a new pointer has been created, 0 if the same is used
+int	init_str(char **str_group, int str_idx, int ch_idx)
+{
+	if (str_group[str_idx][ch_idx] == '\0' && ch_idx == 0)
+		return (0);
+	if (str_group[str_idx][ch_idx] != '\0')
+		str_group[str_idx][ch_idx] = '\0';
+	str_group[str_idx + 1] = malloc(40);
+	str_group[str_idx + 1][0] = '\0';
+	return (1);
+}
+
 
 char	**ft_split(char *str, char *charset)
 {
 	char	**str_group;
 	int		str_idx;
 	int		ch_idx;
+	int		out;
 
 	str_idx = 0;
 	ch_idx = 0;
@@ -62,9 +77,12 @@ char	**ft_split(char *str, char *charset)
 	{
 		if (str_contains(charset, *str))
 		{
-			next_split(str_group, 0, str_idx, ch_idx);
-			ch_idx = 0;
-			str_idx++;
+			out = init_str(str_group, str_idx, ch_idx);
+			if(out == 1)
+			{
+				ch_idx = 0;
+				str_idx++;
+			}
 		}
 		else
 		{
@@ -73,8 +91,21 @@ char	**ft_split(char *str, char *charset)
 		}
 		str++;
 	}
-	next_split(str_group, 1, str_idx, ch_idx);
-	if (str_idx == 0 && ch_idx == 0)
-		str_group[str_idx] = 0;
+	term_str(str_group, str_idx, ch_idx);
 	return (str_group);
 }
+/**
+int main()
+{
+	char *str = ".,.,.,...,,,hello.,.,,,,..,,,world";
+	char *str2 = ".,.,.,...,,,.,.,,,,..,,,.,.,.,.,,.";
+	char *str3 = "hello";
+	char *set = ",.";
+	char **grp = ft_split(str, set);
+
+		printf("%s\n", grp[0]);
+	for (int i = 0; i++; grp[i] != 0)
+	{
+		printf("%s\n", grp[i]);
+	}
+}*/
