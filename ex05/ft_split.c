@@ -6,61 +6,75 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:48:31 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/06 19:54:46 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/07 19:45:29 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
-{
-	unsigned int	found_index;
+#include <stdio.h>
 
-	found_index = 0;
-	if (*str == *to_find && *str == '\0')
+unsigned int	str_len(char *str)
+{
+	unsigned int	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
+}
+
+int	str_contains(char *str, char check)
+{
+	while (*str)
 	{
-		return (str);
-	}
-	while (*str != '\0')
-	{
-		while (str[found_index] == to_find[found_index]
-			&& to_find[found_index] != '\0')
-		{
-			found_index++;
-		}
-		if (to_find[found_index] == '\0')
-		{
-			return (str);
-		}
-		found_index = 0;
+		if (*str == check)
+			return (1);
 		str++;
 	}
 	return (0);
 }
 
-char	*ft_strcpy(char *dest, char *src)
+// terminates the split and creates the next one
+// if given last = 1 creates the terminating split (null pointer)
+void	next_split(char **str_group, int is_last, int str_idx, int ch_idx)
 {
-	char	*start;
-
-	start = dest;
-	while (*src != '\0')
+	if (str_group[str_idx][ch_idx] != '\0')
 	{
-		*dest = *src;
-		dest++;
-		src++;
+		str_group[str_idx][ch_idx] = '\0';
+		if (is_last)
+			str_group[str_idx + 1] = 0;
+		else
+			str_group[str_idx + 1] = malloc(40);
 	}
-	*dest = '\0';
-	return (start);
-}
-
-int	str_len(*str)
-{
-
 }
 
 char	**ft_split(char *str, char *charset)
 {
-	// agafar len charset
-	// buscar amb strstr
-	// copiar aquí amb strcpy des de l'index que troba fins index+len charset
-	// moure punter *str +index strstr + len charset
-	// repetir fins al final
+	char	**str_group;
+	int		str_idx;
+	int		ch_idx;
+
+	str_idx = 0;
+	ch_idx = 0;
+	str_group = malloc(40);
+	str_group[str_idx] = malloc(40);
+	str_group[str_idx][ch_idx] = '\0';
+	while (*str != '\0')
+	{
+		if (str_contains(charset, *str))
+		{
+			next_split(str_group, 0, str_idx, ch_idx);
+			ch_idx = 0;
+			str_idx++;
+		}
+		else
+		{
+			str_group[str_idx][ch_idx] = *str;
+			ch_idx++;
+		}
+		str++;
+	}
+	next_split(str_group, 1, str_idx, ch_idx);
+	if (str_idx == 0 && ch_idx == 0)
+		str_group[str_idx] = 0;
+	return (str_group);
 }
