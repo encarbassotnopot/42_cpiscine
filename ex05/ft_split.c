@@ -6,7 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:48:31 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/08 11:22:27 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/08 11:27:30 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char	**ft_split(char *str, char *charset)
 			if (init_str(str_group, str_idx, ch_idx, 0))
 			{
 				ch_idx = 0;
-				str_ix++;
+				str_idx++;
 			}
 		}
 		else
