@@ -1,15 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_base2.c                                 :+:      :+:    :+:   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:50:29 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/07 15:02:08 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/08 11:19:06 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "ft_convert_base2.c"
+#include "ft_convert_base2.h"
 #include <stdlib.h>
 
 void	ft_putnbr_base(int nbr, char *base, char *dest, int radix)
