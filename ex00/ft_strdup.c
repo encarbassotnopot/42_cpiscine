@@ -6,11 +6,12 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 19:05:02 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/06 18:30:00 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/09 13:29:23 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <sys/errno.h>
 
 char	*ft_strdup(char *src)
 {
@@ -21,6 +22,11 @@ char	*ft_strdup(char *src)
 	while (src[len] != '\0')
 		len++;
 	new = malloc(len);
+	if (new == 0)
+	{
+		errno = ENOMEM;
+		return (0);
+	}
 	len = 0;
 	while (src[len] != '\0')
 	{

@@ -6,11 +6,12 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:57:08 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/06 18:31:49 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/09 13:29:41 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <sys/errno.h>
 
 int	ft_ultimate_range(int **range, int min, int max)
 {
@@ -26,7 +27,10 @@ int	ft_ultimate_range(int **range, int min, int max)
 	}
 	ptr = malloc(size);
 	if (ptr == 0)
+	{
+		errno = ENOMEM;
 		return (-1);
+	}
 	*range = ptr;
 	index = 0;
 	while (index < size)

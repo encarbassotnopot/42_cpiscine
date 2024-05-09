@@ -6,11 +6,12 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 19:23:16 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/06 18:31:05 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/09 13:30:48 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <sys/errno.h>
 
 int	*ft_range(int min, int max)
 {
@@ -22,6 +23,11 @@ int	*ft_range(int min, int max)
 	if (size <= 0)
 		return (0);
 	range = malloc(size);
+	if (range == 0)
+	{
+		errno = ENOMEM;
+		return (0);
+	}
 	index = 0;
 	while (index < size)
 	{

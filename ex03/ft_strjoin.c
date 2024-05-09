@@ -6,9 +6,12 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 13:57:32 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/06 19:50:02 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/09 13:56:21 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
+#include <sys/errno.h>
 
 int	get_size(int size, char **strs, char *sep)
 {
@@ -57,11 +60,21 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	if (size == 0)
 	{
 		start = malloc(1);
+		if (start == 0)
+		{
+			errno = ENOMEM;
+			return (0);
+		}
 		*start = '\0';
 		return (start);
 	}
 	start = malloc(get_size(size, strs, sep) + 1);
-	bookmark = malloc(4);
+	bookmark = malloc(8);
+	if (start == 0 || bookmark == 0)
+	{
+		errno = ENOMEM;
+		return (0);
+	}
 	*bookmark = start;
 	ft_strcpy(bookmark, strs[0]);
 	index = 1;
