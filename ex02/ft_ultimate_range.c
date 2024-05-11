@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/11 15:35:57 by ecoma-ba          #+#    #+#             */
+/*   Updated: 2024/05/11 15:35:59 by ecoma-ba         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <sys/errno.h>
 
@@ -25,7 +37,7 @@ int	*ft_range(int min, int max)
 	return (range);
 }
 
-int ft_ultimate_range(int **range, int min, int max)
+int	ft_ultimate_range(int **range, int min, int max)
 {
 	*range = ft_range(min, max);
 	if (*range == NULL)

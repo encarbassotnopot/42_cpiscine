@@ -6,7 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 19:50:29 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/08 11:47:36 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/11 15:36:12 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -47,7 +47,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	radix = get_radix(base_to);
 	if (radix < 2)
 		return (0);
-	result = malloc(radix*20);
+	result = malloc(radix * 20);
 	if (result == NULL)
 		return (0);
 	ft_putnbr_base(*decimal, base_to, result, radix);
