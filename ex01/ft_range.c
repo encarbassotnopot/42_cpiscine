@@ -22,7 +22,7 @@ int	*ft_range(int min, int max)
 	size = max - min;
 	if (size <= 0)
 		return (0);
-	range = malloc(size);
+	range = malloc(size * 4);
 	if (range == 0)
 	{
 		errno = ENOMEM;

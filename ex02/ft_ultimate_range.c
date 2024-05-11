@@ -1,42 +1,34 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 13:57:08 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/09 13:29:41 by ecoma-ba         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdlib.h>
 #include <sys/errno.h>
 
-int	ft_ultimate_range(int **range, int min, int max)
+int	*ft_range(int min, int max)
 {
 	int	size;
+	int	*range;
 	int	index;
-	int	*ptr;
 
 	size = max - min;
 	if (size <= 0)
-	{
-		*range = 0;
 		return (0);
-	}
-	ptr = malloc(size);
-	if (ptr == 0)
+	range = malloc(size * sizeof(int));
+	if (range == 0)
 	{
 		errno = ENOMEM;
-		return (-1);
+		return (0);
 	}
-	*range = ptr;
 	index = 0;
 	while (index < size)
 	{
-		*(*range + index) = min + index;
+		range[index] = min + index;
 		index++;
 	}
-	return (size);
+	return (range);
+}
+
+int ft_ultimate_range(int **range, int min, int max)
+{
+	*range = ft_range(min, max);
+	if (*range == NULL)
+		return (0);
+	return (max - min);
 }
