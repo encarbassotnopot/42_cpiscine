@@ -74,7 +74,7 @@ char	**ft_split(char *str, char *charset)
 
 	str_idx = 0;
 	ch_idx = 0;
-	str_group = malloc(40);
+	str_group = malloc(sizeof(void *) * 20);
 	init_str(str_group, str_idx, ch_idx, 1);
 	while (*str != '\0')
 	{

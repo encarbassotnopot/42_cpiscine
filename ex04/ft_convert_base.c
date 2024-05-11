@@ -20,7 +20,6 @@ void	dec_to_base(int nbr, char *base, char **dest, int radix);
 void	ft_putnbr_base(int nbr, char *base, char *dest, int radix)
 {
 	unsigned int	nbr_abs;
-	int				index;
 
 	nbr_abs = nbr;
 	if (nbr < 0)
@@ -29,7 +28,6 @@ void	ft_putnbr_base(int nbr, char *base, char *dest, int radix)
 		*dest = '-';
 		dest++;
 	}
-	index = 0;
 	dec_to_base(nbr_abs, base, &dest, radix);
 }
 
@@ -39,7 +37,9 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	char	*result;
 	int		radix;
 
-	decimal = malloc(4);
+	decimal = malloc(4 * sizeof(int));
+	if (decimal == NULL)
+		return (0);
 	radix = get_radix(base_from);
 	if (radix < 2)
 		return (0);
@@ -47,7 +47,10 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	radix = get_radix(base_to);
 	if (radix < 2)
 		return (0);
-	result = malloc(10);
+	result = malloc(radix*20);
+	if (result == NULL)
+		return (0);
 	ft_putnbr_base(*decimal, base_to, result, radix);
+	free(decimal);
 	return (result);
 }

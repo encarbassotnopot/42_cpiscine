@@ -19,19 +19,20 @@ char	*ft_strdup(char *src)
 	char	*new;
 
 	len = 0;
-	while (src[len] != '\0')
+	while (src[len])
 		len++;
-	new = malloc(len);
+	new = malloc(len + 1);
 	if (new == 0)
 	{
 		errno = ENOMEM;
 		return (0);
 	}
 	len = 0;
-	while (src[len] != '\0')
+	while (src[len])
 	{
 		new[len] = src[len];
 		len++;
 	}
+	new[len] = '\0';
 	return (new);
 }

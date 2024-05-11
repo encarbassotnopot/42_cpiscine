@@ -17,6 +17,8 @@ int	get_radix(char *base)
 	int		i;
 
 	count = 0;
+	if (base == NULL)
+		return (-1);
 	while (base[count])
 	{
 		i = 0;
