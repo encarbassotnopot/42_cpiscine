@@ -6,10 +6,11 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:01:30 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/08 11:15:16 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/11 18:10:26 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 int	get_radix(char *base)
 {
 	char	seen[100];
