@@ -6,7 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 00:53:46 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/12 03:13:45 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/12 08:47:25 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,23 @@ char	**split_blocks(char *str, int bs)
 	int		i;
 	int		reminder;
 
-	i = 1;
 	len = count_blocks(str, bs);
+	i = len - 1;
 	block_list = malloc(sizeof(void *) * len);
 	reminder = ft_strlen(str) % bs;
 	if (block_list == NULL)
 		return (NULL);
 	if (reminder != 0)
 	{
-		block_list[0] = ft_strndup(str, ft_strlen(str) % bs);
+		block_list[i] = ft_strndup(str, ft_strlen(str) % bs);
 		str += reminder;
+		i--;
 	}
-	else
-		i = 0;
-	while (i < len)
+	while (i >= 0)
 	{
 		block_list[i] = ft_strndup(str, bs);
 		str += bs;
-		i++;
+		i--;
 	}
 	return (block_list);
 }
@@ -104,20 +103,19 @@ t_mag	*chop_num(char *num)
 	first_mag = NULL;
 	len = count_blocks(num, 3);
 	val_list = split_blocks(num, 3);
-	// MAL FET: aquí perdo de vista un punter, hauria de fer free de val_list
-	// també he de gestionar bé els mallocs així com a concepte
-	val_list = reverse_array(val_list, len - 1);
 	i = 0;
 	while (i < len)
 	{
 		if (val_list[i])
 		{
-			printf("%d\n", len);
 			if (atoi(val_list[i]))
 				first_mag = populate_mag(i, ft_atoi(val_list[i]), first_mag);
 			free(val_list[i]);
 		}
 		i++;
 	}
+	if (first_mag == NULL)
+		first_mag = populate_mag(0, 0, NULL);
+	free(val_list);
 	return (first_mag);
 }

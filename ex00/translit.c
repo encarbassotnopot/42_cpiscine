@@ -6,7 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 23:44:42 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/12 02:48:07 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/12 09:50:23 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,21 @@
 #include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+void	transliterate(t_mag *head)
+{
+	t_dict	mag_dict;
+	t_dict	val_dict;
+	t_mag	*previous;
+
+	mag_dict = get_mag_dict();
+	val_dict = get_val_dict();
+	while (mag->next)
+	{
+		previous = head;
+		head = head->next;
+	}
+}
 
 void	cleanup(t_mag *mag)
 {
@@ -26,13 +41,12 @@ void	cleanup(t_mag *mag)
 		mag = mag->next;
 		free(previous);
 	}
-	free(previous);
+	free(mag);
 }
 
 int	main(int argc, char **argv)
 {
 	t_mag	*mag;
-	t_mag	*start;
 
 	if (argc != 2)
 	{
@@ -40,12 +54,5 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	mag = chop_num(argv[1]);
-	start = mag;
-	while (mag->next)
-	{
-		printf("mag: %d, val: %d\n", mag->order, mag->value);
-		mag = mag->next;
-	}
-	printf("mag: %d, val: %d\n", mag->order, mag->value);
-	free(start);
+	cleanup(mag);
 }

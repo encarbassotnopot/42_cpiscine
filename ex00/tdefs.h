@@ -6,7 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 00:20:37 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/12 01:26:06 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/12 09:05:41 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct t_mag
 typedef struct t_dict
 {
 	char			*name;
-	unsigned int	order;
 	unsigned int	value;
 }					t_dict;
 #endif
