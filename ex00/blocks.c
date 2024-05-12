@@ -6,12 +6,13 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 00:53:46 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/12 01:34:10 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/12 03:13:45 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tdefs.h"
 #include "utils.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 char	*ft_strndup(char *src, int num)
@@ -80,15 +81,43 @@ char	**split_blocks(char *str, int bs)
 	return (block_list);
 }
 
-/*
+t_mag	*populate_mag(int order, int value, t_mag *next)
+{
+	t_mag	*mag;
+
+	mag = malloc(sizeof(t_mag));
+	if (mag == NULL)
+		return (NULL);
+	mag->order = order;
+	mag->value = value;
+	mag->next = next;
+	return (mag);
+}
+
 t_mag	*chop_num(char *num)
 {
 	int		i;
 	t_mag	*first_mag;
+	char	**val_list;
+	int		len;
 
-	i = len - 1;
-	while (i >= 0)
+	first_mag = NULL;
+	len = count_blocks(num, 3);
+	val_list = split_blocks(num, 3);
+	// MAL FET: aquí perdo de vista un punter, hauria de fer free de val_list
+	// també he de gestionar bé els mallocs així com a concepte
+	val_list = reverse_array(val_list, len - 1);
+	i = 0;
+	while (i < len)
 	{
-		atoi(num[i], 3);
+		if (val_list[i])
+		{
+			printf("%d\n", len);
+			if (atoi(val_list[i]))
+				first_mag = populate_mag(i, ft_atoi(val_list[i]), first_mag);
+			free(val_list[i]);
+		}
+		i++;
 	}
-}*/
+	return (first_mag);
+}

@@ -6,7 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 23:44:42 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/12 01:31:12 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/12 02:48:07 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,21 @@ void	cleanup(t_mag *mag)
 
 int	main(int argc, char **argv)
 {
-	char	**bl;
+	t_mag	*mag;
+	t_mag	*start;
 
 	if (argc != 2)
 	{
 		ft_putstr("Wrong number of args");
 		return (1);
 	}
-	bl = split_blocks(argv[1], 3);
-	for (int i = 0; i < count_blocks(argv[1], 3); i++)
-		printf("%s\n", bl[i]);
+	mag = chop_num(argv[1]);
+	start = mag;
+	while (mag->next)
+	{
+		printf("mag: %d, val: %d\n", mag->order, mag->value);
+		mag = mag->next;
+	}
+	printf("mag: %d, val: %d\n", mag->order, mag->value);
+	free(start);
 }
