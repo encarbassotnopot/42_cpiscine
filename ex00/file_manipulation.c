@@ -6,20 +6,20 @@
 /*   By: rbaldoma <rbaldoma@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 12:50:49 by rbaldoma          #+#    #+#             */
-/*   Updated: 2024/05/12 15:55:44 by rbaldoma         ###   ########.fr       */
+/*   Updated: 2024/05/12 16:52:30 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <fcntl.h>
 #include <sys/types.h>
+#include <unistd.h>
 
 char	*ft_strchr(const char *str, int c)
 {
 	while (*str != '\0')
 	{
 		if (*str == c)
-			return (char *)str;
+			return ((char *)str);
 		str++;
 	}
 	return (NULL);
@@ -43,7 +43,8 @@ char	*ft_skip_spaces(char *ptr)
 	return (ptr);
 }
 
-int	ft_get_values(char *buffer, ssize_t bytes_read, char values[41][20], int index)
+int	ft_get_values(char *buffer, ssize_t bytes_read, char values[41][20],
+		int index)
 {
 	char	*ptr;
 	char	*end;
@@ -51,10 +52,10 @@ int	ft_get_values(char *buffer, ssize_t bytes_read, char values[41][20], int ind
 
 	ptr = buffer;
 	end = buffer + bytes_read;
-	while(ptr < end)
+	while (ptr < end)
 	{
 		to_search = ft_strchr(ptr, ':');
-		if(to_search != NULL)
+		if (to_search != NULL)
 		{
 			ptr = to_search + 1;
 			ptr = ft_skip_spaces(ptr);
@@ -62,7 +63,7 @@ int	ft_get_values(char *buffer, ssize_t bytes_read, char values[41][20], int ind
 			index++;
 		}
 		else
-			break;
+			break ;
 	}
 	return (index);
 }

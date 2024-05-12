@@ -6,7 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 00:09:11 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/12 08:25:23 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/12 16:28:11 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,15 @@ int	ft_strlen(char *str)
 	return (count);
 }
 
-// returns a pointer to the reversed array, which it creates
-char	**reverse_array(char **arr, int size)
+int	ft_str_is_numeric(char *str)
 {
-	int		start;
-	char	**out;
-
-	start = 0;
-	out = malloc(sizeof(void *) * size);
-	if (out == NULL)
-		return (NULL);
-	while (start < size)
+	while (*str != '\0')
 	{
-		out[start] = arr[size - start - 1];
-		start++;
+		if (*str < '0' || *str > '9')
+		{
+			return (0);
+		}
+		str++;
 	}
-	return (out);
+	return (1);
 }

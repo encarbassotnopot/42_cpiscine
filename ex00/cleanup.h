@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   cleanup.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 00:23:14 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/12 16:51:27 by ecoma-ba         ###   ########.fr       */
+/*   Created: 2024/05/12 12:52:31 by ecoma-ba          #+#    #+#             */
+/*   Updated: 2024/05/12 18:28:11 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef CLEANUP_H
+# define CLEANUP_H
+# include "tdefs.h"
 
-void	ft_putstr(char *str);
-int		ft_atoi(char *str);
-int		ft_strlen(char *str);
-int		ft_str_is_numeric(char *str);
+void	cleanup_dict(t_dict **dict);
+void	cleanup_mag(t_mag *mag);
+void	cleanup_val_list(char **val_list);
 #endif
