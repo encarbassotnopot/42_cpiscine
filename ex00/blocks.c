@@ -6,15 +6,14 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 00:53:46 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/12 18:30:10 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/12 18:45:58 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "cleanup.h"
 #include "tdefs.h"
 #include "utils.h"
-#include "cleanup.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 char	*ft_strndup(char *src, int num)
 {
@@ -117,11 +116,11 @@ t_mag	*chop_num(char *num)
 		i++;
 	}
 	if (first_mag == NULL)
-	{	printf("0000\n");
+	{
 		first_mag = populate_mag(0, 0, NULL);
 	}
 	if (!first_mag)
 		return (NULL);
-	//cleanup_val_list(val_list);
+	cleanup_val_list(val_list);
 	return (first_mag);
 }
