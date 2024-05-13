@@ -6,12 +6,11 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:26:31 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/13 13:26:20 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/13 13:50:31 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stock_str.h"
-#include "../ex04/ft_strs_to_tab.c"
 #include <unistd.h>
 
 void	ft_putnbr(int nb)
@@ -46,7 +45,7 @@ void	ft_putstr(char *str)
 	while (*str != '\0')
 	{
 		write(1, str, 1);
-		str ++;
+		str++;
 	}
 	write(1, "\n", 1);
 }
@@ -55,16 +54,11 @@ void	ft_show_tab(struct s_stock_str *par)
 {
 	if (par == 0)
 		return ;
-	while (par -> str != 0)
+	while (par->str != 0)
 	{
-		ft_putnbr(par -> size);
-		ft_putstr(par -> str);
-		ft_putstr(par -> copy);
+		ft_putnbr(par->size);
+		ft_putstr(par->str);
+		ft_putstr(par->copy);
 		par++;
 	}
-}
-
-int main (int argc, char **argv)
-{
-	ft_show_tab(ft_strs_to_tab(--argc, ++argv));
 }
