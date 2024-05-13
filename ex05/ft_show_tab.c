@@ -6,11 +6,12 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 19:26:31 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/11 19:39:13 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/13 13:26:20 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_stock_str.h"
+#include "../ex04/ft_strs_to_tab.c"
 #include <unistd.h>
 
 void	ft_putnbr(int nb)
@@ -61,4 +62,9 @@ void	ft_show_tab(struct s_stock_str *par)
 		ft_putstr(par -> copy);
 		par++;
 	}
+}
+
+int main (int argc, char **argv)
+{
+	ft_show_tab(ft_strs_to_tab(--argc, ++argv));
 }
