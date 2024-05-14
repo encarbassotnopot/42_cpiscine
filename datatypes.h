@@ -6,26 +6,39 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:44:02 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/14 10:57:57 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/14 20:29:36 by bcanals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DATATYPES_H
 # define DATATYPES_H
 
-enum			e_c_cont
+typedef enum			e_c_cont
 {
 	empty,
 	obstacle
-}
+} t_c_cont;
+
+typedef struct	s_point
+{
+	int x;
+	int y;
+}				t_point;
+
+typedef struct s_result
+{
+	int x;
+	int y;
+	int size;
+}		t_result;
 
 typedef struct s_cell
 {
 	int			x;
 	int			y;
-	s_cell		*next_x;
-	s_cell		*next_y;
-	e_c_cont	content;
+	struct s_cell		*next_x;
+	struct s_cell		*next_y;
+	enum e_c_cont	content;
 
 }				t_cell;
 

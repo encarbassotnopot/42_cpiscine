@@ -1,6 +1,9 @@
 NAME = bsq
 
-MY_SOURCES = main.c 
+MY_SOURCES = main.c \
+			 result_utils.c \
+			 result_utils2.c \
+			 bernat_test.c
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 
