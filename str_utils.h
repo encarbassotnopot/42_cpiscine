@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BSQ.h                                              :+:      :+:    :+:   */
+/*   str_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcanals- <bcanals-@student.42barcel>       +#+  +:+       +#+        */
+/*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 09:34:22 by bcanals-          #+#    #+#             */
-/*   Updated: 2024/05/14 10:14:33 by bcanals-         ###   ########.fr       */
+/*   Created: 2024/05/14 13:05:03 by ecoma-ba          #+#    #+#             */
+/*   Updated: 2024/05/14 17:17:47 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-struct info_line
-{
-	char	lines;
-	char	empty;
-	char	obstacle;
-	char	full;
-	char	new_line;
-};
-
-void    ft_putchar(char c);
-void	ft_putstr(char *c);
+int		ft_atoin(char *str, int i);
+void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+char	*str_plus_one(char **original, unsigned int len);
