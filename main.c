@@ -6,7 +6,7 @@
 /*   By: bcanals- <bcanals-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 09:02:26 by bcanals-          #+#    #+#             */
-/*   Updated: 2024/05/14 17:18:17 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/14 18:41:33 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,29 @@
 
 t_board	*setup_board(int fd)
 {
-	char			**buf;
+	char			*buf;
 	unsigned int	buf_size;
 
 	buf_size = 1;
-	buf = malloc(sizeof(void *));
+	buf = malloc(buf_size);
 	if (!buf)
 		return (NULL);
-	*buf = malloc(buf_size);
-	if (!*buf)
-		return (NULL);
-	**buf = '\0';
-	while (*(*buf + buf_size - 1) != '\n')
+	while (buf[buf_size - 1] != '\n')
 	{
-		*buf = str_plus_one(buf, buf_size);
-		if (!*buf)
-			return (NULL);
-		if (read(fd, (*buf + buf_size - 1), 1) < 1)
-			return (NULL);
+		ft_putchar(&buf[buf_size - 1]);
+		buf = str_plus_one(&buf, buf_size);
+		ft_putchar(&buf[buf_size]);
 		buf_size++;
+		if (!*buf)
+		{
+			ft_putstr("em moro\n");
+			return (NULL);
+		}
+		if (read(fd, &buf[buf_size - 1], 1) < 1)
+		{
+			ft_putstr("em mato\n");
+			return (NULL);
+		}
 	}
 	return (NULL);
 }

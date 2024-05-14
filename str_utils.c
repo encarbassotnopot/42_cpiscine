@@ -6,11 +6,10 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 12:58:02 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/14 17:17:41 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/14 18:30:24 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -65,23 +64,23 @@ int	ft_strlen(char *str)
 	return (count);
 }
 
-char	*str_plus_one(char **original, unsigned int len)
+char	*str_plus_one(char *original, unsigned int len)
 {
 	unsigned int	i;
 	char			*new;
 
 	i = 0;
-	new = malloc(len + 1);
+	new = malloc(len);
 	if (!new)
 	{
+		ft_putstr("què cony\n");
 		return (NULL);
 	}
-	while (i < len)
+	while (i < len - 1)
 	{
-		printf("%d, %d, %d\n", i, *original[i], len);
-		new[i] = *original[i];
+		new[i] = original[i];
 		i++;
 	}
-	free(*original);
+	free(original);
 	return (new);
 }

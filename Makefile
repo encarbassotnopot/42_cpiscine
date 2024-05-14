@@ -6,14 +6,14 @@ MY_INCLUDES = datatypes.h str_utils.h
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 
-CC = clang
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME): $(MY_OBJECTS)
-		cc $(MY_OBJECTS) -o $(NAME)
+		$(CC) $(MY_OBJECTS) -o $(NAME)
 
 %.c: %.o
 
