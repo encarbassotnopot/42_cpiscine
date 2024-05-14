@@ -6,7 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:44:02 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/14 20:29:36 by bcanals-         ###   ########.fr       */
+/*   Updated: 2024/05/15 01:10:07 by bcanals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ typedef enum			e_c_cont
 	obstacle
 } t_c_cont;
 
-typedef struct	s_point
-{
-	int x;
-	int y;
-}				t_point;
-
 typedef struct s_result
 {
 	int x;
 	int y;
 	int size;
 }		t_result;
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}		t_point;
 
 typedef struct s_cell
 {
