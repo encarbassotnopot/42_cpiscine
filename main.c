@@ -6,14 +6,14 @@
 /*   By: bcanals- <bcanals-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 09:02:26 by bcanals-          #+#    #+#             */
-/*   Updated: 2024/05/14 10:19:53 by bcanals-         ###   ########.fr       */
+/*   Updated: 2024/05/14 11:18:33 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "BSQ.h"
+#include "bsq.h"
 
 int main (int argc, char **argv)
 {
