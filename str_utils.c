@@ -6,7 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 12:58:02 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/14 18:30:24 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:35:40 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,34 @@ int	ft_strlen(char *str)
 	return (count);
 }
 
-char	*str_plus_one(char *original, unsigned int len)
+char	*ft_strcpy(char *dest, char *src)
+{
+	char	*start;
+
+	start = dest;
+	while (*src != '\0')
+	{
+		*dest = *src;
+		dest++;
+		src++;
+	}
+	*dest = '\0';
+	return (start);
+}
+
+char	*str_plus_one(char **original, unsigned int len)
 {
 	unsigned int	i;
 	char			*new;
 
 	i = 0;
-	new = malloc(len);
+	new = malloc(len + 1);
 	if (!new)
 	{
-		ft_putstr("què cony\n");
+		free(*original);
 		return (NULL);
 	}
-	while (i < len - 1)
-	{
-		new[i] = original[i];
-		i++;
-	}
-	free(original);
+	ft_strcpy(new, *original);
+	free(*original);
 	return (new);
 }
