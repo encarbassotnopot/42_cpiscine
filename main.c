@@ -6,12 +6,13 @@
 /*   By: bcanals- <bcanals-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 09:02:26 by bcanals-          #+#    #+#             */
-/*   Updated: 2024/05/15 14:48:32 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:34:09 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "datatypes.h"
-#include "str_utils.h"
+#include "str_utils1.h"
+#include "str_utils2.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,8 +32,7 @@ char	*read_line(int fd)
 		return (NULL);
 	while (r > 0)
 	{
-		buf = str_plus_one(&buf, buf_size);
-		buf_size++;
+		buf = str_plus_one(&buf, buf_size++);
 		if (!buf)
 			return (NULL);
 		r = read(fd, &buf[buf_size - 2], 1);
