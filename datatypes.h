@@ -6,7 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:44:02 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/15 13:10:16 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:22:18 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_board
 	char			empty;
 	char			square;
 	char			obstacle;
+	int				*board;
 }					t_board;
 #endif
 

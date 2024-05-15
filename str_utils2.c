@@ -6,10 +6,11 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 12:58:02 by ecoma-ba          #+#    #+#             */
-/*   Updated: 2024/05/15 14:54:03 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:49:28 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "str_utils1.h"
 #include <stdlib.h>
 #include <unistd.h>
 
@@ -34,7 +35,7 @@ char	*str_plus_one(char **original, unsigned int len)
 	char			*new;
 
 	i = 0;
-	new = malloc(len + 1);
+	new = malloc(len);
 	if (!new)
 	{
 		free(*original);

@@ -6,7 +6,7 @@
 /*   By: bcanals- <bcanals-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 09:02:26 by bcanals-          #+#    #+#             */
-/*   Updated: 2024/05/15 15:34:09 by ecoma-ba         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:59:25 by ecoma-ba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,47 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+int	buffered_line_reader(int fd, char **buf)
+{
+	int	r;
+	int	buf_size;
+
+	if (!*buf)
+	{
+		buf_size = 1;
+		*buf = malloc(buf_size);
+		*buf[buf_size - 1] = '\0';
+	}
+	else
+		buf_size = ft_strlen(*buf) + 1;
+	*buf = str_plus_one(buf, ++buf_size);
+	printf("");
+	if (!*buf)
+		return (-1);
+	r = read(fd, (char *)(*buf + buf_size - 2), 1);
+	if (*buf[buf_size - 2] == '\n')
+		*buf[buf_size - 2] = '\0';
+	else
+		*buf[buf_size - 1] = '\0';
+	return (r);
+}
+
 char	*read_line(int fd)
 {
-	char			*buf;
-	unsigned int	buf_size;
-	int				r;
+	char	*buf;
+	int		r;
 
 	r = 1;
-	buf_size = 1;
-	buf = malloc(buf_size);
-	buf[buf_size - 1] = '\0';
+	buf = malloc(sizeof(void *));
 	if (!buf)
 		return (NULL);
 	while (r > 0)
 	{
-		buf = str_plus_one(&buf, buf_size++);
-		if (!buf)
-			return (NULL);
-		r = read(fd, &buf[buf_size - 2], 1);
-		if (buf[buf_size - 2] == '\n')
-			buf[buf_size - 2] = '\0';
-		else
-			buf[buf_size - 1] = '\0';
+		r = buffered_line_reader(fd, &buf);
 		if (r == 0)
 			return (buf);
-		else if (r < 0)
+		if (r < 0)
 		{
-			free(buf);
 			return (NULL);
 		}
 	}
@@ -93,27 +107,36 @@ t_board	*setup_board(int fd)
 {
 	char	*fst_line;
 	int		fst_len;
-	t_board	*board;
+	t_board	*bd;
 
-	board = header_props(fd);
-	if (!board)
+	bd = header_props(fd);
+	if (!bd)
 	{
 		return (NULL);
 	}
 	fst_line = read_line(fd);
 	if (!fst_line)
 	{
-		free(board);
+		free(bd);
 		return (NULL);
 	}
 	fst_len = ft_strlen(fst_line);
 	if (fst_len < 1)
 	{
-		free(board);
+		free(bd);
 		return (NULL);
 	}
+	bd->size_x = fst_len;
+	bd->board = malloc((bd->size_x * bd->size_y + sizeof(int) - 1)
+			/ sizeof(int));
+	if (!bd->board)
+	{
+		free(bd);
+		return (NULL);
+	}
+	else
+		return (NULL);
 }
-
 int	main(int argc, char **argv)
 {
 	int		fd;
