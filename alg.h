@@ -6,9 +6,11 @@
 /*   By: bcanals- <bcanals-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:21:27 by bcanals-          #+#    #+#             */
-/*   Updated: 2024/05/14 21:03:50 by bcanals-         ###   ########.fr       */
+/*   Updated: 2024/05/15 09:00:22 by bcanals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "datatypes.h"
 
 t_b_props	*make_map(int x, int y);
 t_cell		**make_cells(int x, int y);
@@ -23,3 +25,5 @@ int get_param(t_cell *cell, char c);
 int	get_dist(int coord, int val, char dir, t_cell ***arrays);
 int margin(int i, int j, char *dir, t_b_props *map_props);
 void    append_me(int x, int y, t_cell ***arrays);
+void    print_arrays(t_cell ***arrays, t_b_props *map);
+int iterate_indexes(int *k, int *i, int *j, t_b_props *map_props);

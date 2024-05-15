@@ -6,7 +6,7 @@
 /*   By: bcanals- <bcanals-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:11:10 by bcanals-          #+#    #+#             */
-/*   Updated: 2024/05/15 00:19:22 by bcanals-         ###   ########.fr       */
+/*   Updated: 2024/05/15 01:55:33 by bcanals-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ void	print_map(t_b_props *map_props, t_cell **map)
 		j = 0;
 		while (j < map_props->size_x)
 		{
-			printf("%i ", map[j][i].content);
+			if (map[j][i].content == 1)
+				printf("x ");
+			else
+				printf(". ");
 			j++;
 		}
 		printf("\n");
