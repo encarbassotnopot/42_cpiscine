@@ -7,14 +7,10 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:03:39 by bcanals-          #+#    #+#             */
 <<<<<<< HEAD
-<<<<<<< HEAD
 /*   Updated: 2024/05/15 10:30:52 by bcanals-         ###   ########.fr       */
 =======
 /*   Updated: 2024/05/14 19:17:43 by bcanals-         ###   ########.fr       */
 >>>>>>> bsq/m
-=======
-/*   Updated: 2024/05/14 18:50:01 by bcanals-         ###   ########.fr       */
->>>>>>> bsq/bernat
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +123,7 @@ int	get_dist(int coord, int val, char dir, t_cell ***arrays)
 =======
 	{
 		if (cell->y == -1)
-			return (-1);
+			return (1);
 		return (-cell->y);
 	}
 	else
@@ -151,7 +147,6 @@ int get_dist(int coord, int val, char dir, t_cell ***arrays)
 	t_cell	*obst;
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 	printf("inside get_dist");
 	obst = get_obst(coord, dir, arrays);
 	while (get_param(obst, dir) < val)
@@ -163,19 +158,12 @@ int get_dist(int coord, int val, char dir, t_cell ***arrays)
 	return (dist);
 }
 =======
-=======
-	printf("get_dist_1\n");
->>>>>>> bsq/bernat
 	obst = get_obst(coord, dir, arrays);
-	printf("get_dist_2\n");
 	while (get_param(obst, dir) < val)
 	{
-		printf("get_dist_2.1\n");
 		obst = get_next_cell(obst, dir);
 	}
-	printf("get_dist_3\n");
 	dist = val - get_param(obst, dir);
-	printf("get_dist_4\n");
 	if (dist < 0)
 		dist *= -1;
 	return (dist);

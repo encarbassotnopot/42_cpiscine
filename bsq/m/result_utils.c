@@ -7,14 +7,10 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:05:10 by bcanals-          #+#    #+#             */
 <<<<<<< HEAD
-<<<<<<< HEAD
 /*   Updated: 2024/05/15 09:21:33 by bcanals-         ###   ########.fr       */
 =======
 /*   Updated: 2024/05/14 19:32:04 by bcanals-         ###   ########.fr       */
 >>>>>>> bsq/m
-=======
-/*   Updated: 2024/05/14 18:43:03 by bcanals-         ###   ########.fr       */
->>>>>>> bsq/bernat
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +61,11 @@ int get_max_square(int x, int y, t_cell ***arrays)
 	int next_y;
 	//int min;
 
-<<<<<<< HEAD
 	next_x = get_dist(y, x, 'h', arrays);
 	printf("next_x = %i, ", next_x);
 	next_y = get_dist(x, -y, 'v', arrays);
 	printf("next_y = %i\n", next_y);
 >>>>>>> bsq/m
-=======
-	next_x = get_dist(y, x, 'v', arrays);
-	next_y = get_dist(x, -y, 'h', arrays);
->>>>>>> bsq/bernat
 	if (next_x > next_y)
 		return (next_y);
 	return (next_x);
@@ -150,7 +141,6 @@ int	get_max_square_full(int x, int y, t_cell ***arrays, char *dir)
 
 	max_h = get_max_square(x + 1, y, arrays);
 	max_v = get_max_square(x, y - 1, arrays);
-	printf("get_max_square_full\n");
 	if (max_h >= max_v)
 	{
 		*dir = 'h';
@@ -208,16 +198,13 @@ t_result	*get_result(t_b_props *map_props, t_cell **map, t_cell ***arrays)
 		{
 			printf("k: %i, i: %i, j: %i\n", k, i, j);
 			size = get_max_square_full(i, j, arrays, &dir);
+			printf("max_square = %i\n", size);
 			//append_me(t_cell[i][j], arrays);
 			if (size > res->size || (size == res->size && i > res->x))
 				update_result(res, size, &map[i][j], dir);
 		}
 	}
-<<<<<<< HEAD
 	printf("ANSWER: %i", res->size);
 >>>>>>> bsq/m
-=======
-	printf("square size = %i", res->size);
->>>>>>> bsq/bernat
 	return (res);
 }

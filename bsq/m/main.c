@@ -7,14 +7,10 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 09:02:26 by bcanals-          #+#    #+#             */
 <<<<<<< HEAD
-<<<<<<< HEAD
 /*   Updated: 2024/05/15 10:39:27 by bcanals-         ###   ########.fr       */
 =======
 /*   Updated: 2024/05/14 19:33:10 by bcanals-         ###   ########.fr       */
 >>>>>>> bsq/m
-=======
-/*   Updated: 2024/05/14 16:35:27 by bcanals-         ###   ########.fr       */
->>>>>>> bsq/bernat
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +84,8 @@ int	main(int argc, char **argv)
 	argc++;
 	map_props = make_map(atoi(argv[1]), atoi(argv[2]));
 	map = make_cells(map_props->size_x, map_props->size_y);
-	put_obstacle(map, 1, 3);
+	put_obstacle(map, atoi(argv[3]), atoi(argv[4]));
+	//put_obstacle(map, 2, 1);
 	print_map(map_props, map);
 	arrays = set_cell_array(map_props->size_x, map_props->size_y);
 	answer = get_result(map_props, map, arrays);
