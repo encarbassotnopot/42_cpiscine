@@ -6,11 +6,7 @@
 /*   By: bcanals- <bcanals-@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 09:02:26 by bcanals-          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2024/05/15 10:39:27 by bcanals-         ###   ########.fr       */
-=======
-/*   Updated: 2024/05/14 19:33:10 by bcanals-         ###   ########.fr       */
->>>>>>> bsq/m
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +15,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-<<<<<<< HEAD
 int	main()//int argc, char **argv)
 {
-=======
-int	min(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
-}
-
-int	main(int argc, char **argv)
-{
->>>>>>> bsq/m
 	t_b_props	*map_props;
 	t_cell		**map;
 	t_cell		***arrays;
 	t_result	*answer;
-<<<<<<< HEAD
 	//int i = 0;
 	//int lol1 = 0;
 	//int lol2 = 0;
@@ -79,16 +62,5 @@ int	main(int argc, char **argv)
 	print_arrays(arrays, map_props);
 	answer = get_result(map_props, map, arrays);
 	print_arrays(arrays, map_props);
-=======
-
-	argc++;
-	map_props = make_map(atoi(argv[1]), atoi(argv[2]));
-	map = make_cells(map_props->size_x, map_props->size_y);
-	put_obstacle(map, atoi(argv[3]), atoi(argv[4]));
-	//put_obstacle(map, 2, 1);
-	print_map(map_props, map);
-	arrays = set_cell_array(map_props->size_x, map_props->size_y);
-	answer = get_result(map_props, map, arrays);
->>>>>>> bsq/m
 }
 

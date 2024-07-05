@@ -1,17 +1,10 @@
 NAME = bsq
 
-<<<<<<< HEAD
 MY_SOURCES = main.c \
 			 result_utils.c \
 			 result_utils2.c \
 			 result_utils3.c \
 			 bernat_test.c
-=======
-MY_SOURCES = bernat_test.c \
-			 result_utils.c \
-			 result_utils2.c \
-			 main.c
->>>>>>> bsq/m
 
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 

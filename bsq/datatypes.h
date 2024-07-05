@@ -6,11 +6,7 @@
 /*   By: ecoma-ba <ecoma-ba@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 10:44:02 by ecoma-ba          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2024/05/15 02:51:33 by bcanals-         ###   ########.fr       */
-=======
-/*   Updated: 2024/05/14 13:25:07 by bcanals-         ###   ########.fr       */
->>>>>>> bsq/m
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +25,12 @@ typedef struct s_result
 	int y;
 	int size;
 }		t_result;
-<<<<<<< HEAD
 
 typedef struct s_point
 {
 	int	x;
 	int	y;
 }		t_point;
-=======
->>>>>>> bsq/m
 
 typedef struct s_cell
 {
